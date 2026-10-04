@@ -1,0 +1,627 @@
+index.html
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VerveelMeNiet 🤪</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: white;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #7c3aed, #ec4899);
+        transition: 0.5s;
+    }
+
+    header {
+        padding: 50px 20px 25px;
+    }
+
+    h1 {
+        font-size: 55px;
+        margin: 0;
+    }
+
+    header p {
+        font-size: 20px;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .card {
+        background: white;
+        color: #222;
+        border-radius: 25px;
+        padding: 25px;
+        margin: 20px 0;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    button {
+        border: none;
+        border-radius: 15px;
+        padding: 15px 20px;
+        margin: 6px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        background: #eee;
+        transition: 0.15s;
+    }
+
+    button:hover {
+        transform: scale(1.08);
+    }
+
+    .main-button {
+        background: #ff7a18;
+        color: white;
+    }
+
+    .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .result {
+        background: #f2f2f7;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 15px 0;
+        font-size: 20px;
+        font-weight: bold;
+        min-height: 65px;
+    }
+
+    #reaction {
+        height: 120px;
+        border-radius: 20px;
+        background: #ff4757;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 15px 0;
+    }
+
+    footer {
+        padding: 30px;
+    }
+
+    /* KOPROL */
+    @keyframes koprol {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        50% {
+            transform: rotate(180deg) scale(0.9);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .do-koprol {
+        animation: koprol 0.9s ease-in-out;
+    }
+
+    /* CONFETTI */
+    .confetti {
+        position: fixed;
+        top: -20px;
+        width: 10px;
+        height: 18px;
+        animation: vallen 2s linear forwards;
+        z-index: 999;
+    }
+
+    @keyframes vallen {
+        to {
+            transform: translateY(110vh) rotate(720deg);
+            opacity: 0;
+        }
+    }
+
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 40px;
+        }
+
+        header p {
+            font-size: 17px;
+        }
+
+        button {
+            font-size: 15px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🤪 VerveelMeNiet!</h1>
+
+    <p>
+        Verveel je je? Dan ben je hier precies goed! 😎
+    </p>
+</header>
+
+
+<div class="container">
+
+    <!-- VERRAS MIJ -->
+    <div class="card">
+
+        <h2>🎁 Wat zullen we doen?</h2>
+
+        <div id="idee" class="result">
+            Klik op "Verras me!"
+        </div>
+
+        <button class="main-button" onclick="verrasMij()">
+            🎁 Verras me!
+        </button>
+
+        <button onclick="koprol()">
+            🤸 KOPROL!
+        </button>
+
+        <button onclick="feest()">
+            🎉 Feestmodus!
+        </button>
+
+        <button onclick="nieuweKleuren()">
+            🌈 Nieuwe kleuren
+        </button>
+
+    </div>
+
+
+    <!-- GRAP -->
+    <div class="card">
+
+        <h2>😂 Random grap</h2>
+
+        <div id="grap" class="result">
+            Klik op de knop!
+        </div>
+
+        <button class="main-button" onclick="grap()">
+            😂 Vertel een grap
+        </button>
+
+    </div>
+
+
+    <!-- RAAD HET GETAL -->
+    <div class="card">
+
+        <h2>🧠 Raad het getal</h2>
+
+        <p>
+            Ik heb een getal gekozen tussen 1 en 10.
+        </p>
+
+        <div class="buttons">
+
+            <button onclick="raad(1)">1</button>
+            <button onclick="raad(2)">2</button>
+            <button onclick="raad(3)">3</button>
+            <button onclick="raad(4)">4</button>
+            <button onclick="raad(5)">5</button>
+            <button onclick="raad(6)">6</button>
+            <button onclick="raad(7)">7</button>
+            <button onclick="raad(8)">8</button>
+            <button onclick="raad(9)">9</button>
+            <button onclick="raad(10)">10</button>
+
+        </div>
+
+        <div id="raadResultaat" class="result">
+            Kies een getal!
+        </div>
+
+    </div>
+
+
+    <!-- REACTIESPEL -->
+    <div class="card">
+
+        <h2>⚡ Reactiespel</h2>
+
+        <p>
+            Klik zo snel mogelijk als het vak groen wordt!
+        </p>
+
+        <div id="reaction" onclick="klikReaction()">
+            START
+        </div>
+
+        <button class="main-button" onclick="startReaction()">
+            ⚡ Start
+        </button>
+
+        <div id="reactionResult" class="result">
+            Je tijd verschijnt hier.
+        </div>
+
+    </div>
+
+
+    <!-- KOP OF MUNT -->
+    <div class="card">
+
+        <h2>🪙 Kop of munt?</h2>
+
+        <div id="muntResultaat" class="result">
+            Kies!
+        </div>
+
+        <button onclick="muntGooien()">
+            🪙 Gooien!
+        </button>
+
+    </div>
+
+
+    <!-- VOORSPELLING -->
+    <div class="card">
+
+        <h2>🔮 Random voorspelling</h2>
+
+        <div id="voorspelling" class="result">
+            De toekomst weet het al...
+        </div>
+
+        <button class="main-button" onclick="voorspel()">
+            🔮 Voorspel mijn toekomst
+        </button>
+
+    </div>
+
+
+    <!-- CHALLENGE -->
+    <div class="card">
+
+        <h2>🔥 Challenge</h2>
+
+        <div id="challenge" class="result">
+            Klik voor een challenge!
+        </div>
+
+        <button class="main-button" onclick="challenge()">
+            🔥 Geef me een challenge
+        </button>
+
+    </div>
+
+</div>
+
+
+<footer>
+    Gemaakt tegen verveling 🤪 ❤️
+</footer>
+
+
+<script>
+
+const ideeen = [
+    "Doe 20 seconden alsof je een robot bent 🤖",
+    "Teken een dier met je ogen dicht 🎨",
+    "Verzin een nieuwe kleur 🌈",
+    "Doe een dansje van 10 seconden 💃",
+    "Probeer een zin te zeggen zonder de letter A 😮",
+    "Bouw een toren van spullen om je heen 🏗️",
+    "Verzin een superheld met een nutteloze superkracht 🦸",
+    "Doe alsof je een nieuwslezer bent 📺",
+    "Maak een gekke foto 📸",
+    "Leer één nieuw woord in een andere taal 🌍"
+];
+
+
+const grappen = [
+    "Waarom ging de computer naar de dokter? Hij had een virus! 💻😂",
+    "Wat zegt een vis als hij tegen een muur zwemt? Dam! 🐟",
+    "Waarom kan een skelet niet liegen? Je kunt er dwars doorheen kijken! 💀",
+    "Wat doet een nul naast een acht? Een briljant idee! 🤓",
+    "Waarom nam de banaan zonnebrand mee? 🍌"
+];
+
+
+const challenges = [
+    "Probeer 30 seconden niet te lachen 😐",
+    "Noem 10 dieren in 15 seconden 🐶",
+    "Bedenk 5 superkrachten die niemand wil 🦸",
+    "Maak een geluid dat niemand kan raden 🔊",
+    "Schrijf je naam met je andere hand ✍️",
+    "Zoek iets in je kamer dat blauw is 🔎"
+];
+
+
+let geheimGetal = Math.floor(Math.random() * 10) + 1;
+
+let reactionStart = 0;
+let reactionKlaar = false;
+let reactionTimer;
+
+
+/* RANDOM ITEM */
+
+function randomItem(lijst) {
+    return lijst[Math.floor(Math.random() * lijst.length)];
+}
+
+
+/* VERRAS MIJ */
+
+function verrasMij() {
+
+    document.getElementById("idee").textContent =
+        randomItem(ideeen);
+
+}
+
+
+/* GRAP */
+
+function grap() {
+
+    document.getElementById("grap").textContent =
+        randomItem(grappen);
+
+}
+
+
+/* KOPROL */
+
+function koprol() {
+
+    document.body.classList.remove("do-koprol");
+
+    void document.body.offsetWidth;
+
+    document.body.classList.add("do-koprol");
+
+}
+
+
+/* FEEST */
+
+function feest() {
+
+    for (let i = 0; i < 80; i++) {
+
+        let confetti = document.createElement("div");
+
+        confetti.className = "confetti";
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+        confetti.style.background =
+            "hsl(" + Math.random() * 360 + ", 90%, 60%)";
+
+        confetti.style.animationDelay =
+            Math.random() * 0.7 + "s";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(function() {
+            confetti.remove();
+        }, 2500);
+
+    }
+
+}
+
+
+/* NIEUWE KLEUREN */
+
+function nieuweKleuren() {
+
+    const kleuren = [
+        ["#06b6d4", "#3b82f6"],
+        ["#22c55e", "#14b8a6"],
+        ["#f97316", "#ef4444"],
+        ["#8b5cf6", "#d946ef"],
+        ["#0f766e", "#84cc16"]
+    ];
+
+    let kleurenSet =
+        randomItem(kleuren);
+
+    document.body.style.background =
+        "linear-gradient(135deg, " +
+        kleurenSet[0] +
+        ", " +
+        kleurenSet[1] +
+        ")";
+
+}
+
+
+/* RAAD HET GETAL */
+
+function raad(getal) {
+
+    let resultaat =
+        document.getElementById("raadResultaat");
+
+    if (getal === geheimGetal) {
+
+        resultaat.textContent =
+            "🎉 GOED GERADEN!";
+
+        geheimGetal =
+            Math.floor(Math.random() * 10) + 1;
+
+        feest();
+
+    } else if (getal < geheimGetal) {
+
+        resultaat.textContent =
+            "⬆️ Hoger!";
+
+    } else {
+
+        resultaat.textContent =
+            "⬇️ Lager!";
+
+    }
+
+}
+
+
+/* REACTIESPEL */
+
+function startReaction() {
+
+    const vak =
+        document.getElementById("reaction");
+
+    reactionKlaar = false;
+
+    vak.textContent = "Wacht...";
+
+    vak.style.background = "#f59e0b";
+
+    let tijd =
+        Math.random() * 3000 + 1000;
+
+    clearTimeout(reactionTimer);
+
+    reactionTimer = setTimeout(function() {
+
+        reactionKlaar = true;
+
+        reactionStart =
+            performance.now();
+
+        vak.textContent =
+            "KLIK!!!";
+
+        vak.style.background =
+            "#22c55e";
+
+    }, tijd);
+
+}
+
+
+/* REACTION KLIKKEN */
+
+function klikReaction() {
+
+    const vak =
+        document.getElementById("reaction");
+
+    if (!reactionKlaar) {
+
+        vak.textContent =
+            "TE VROEG! 😂";
+
+        vak.style.background =
+            "#ef4444";
+
+        clearTimeout(reactionTimer);
+
+        return;
+
+    }
+
+    let tijd =
+        Math.round(
+            performance.now() - reactionStart
+        );
+
+    document.getElementById("reactionResult")
+        .textContent =
+        "⚡ " + tijd + " milliseconden!";
+
+    vak.textContent =
+        "START";
+
+    vak.style.background =
+        "#ff4757";
+
+    reactionKlaar = false;
+
+}
+
+
+/* KOP OF MUNT */
+
+function muntGooien() {
+
+    let resultaat =
+        Math.random() < 0.5
+        ? "KOP 🪙"
+        : "MUNT 🪙";
+
+    document.getElementById("muntResultaat")
+        .textContent =
+        resultaat;
+
+}
+
+
+/* VOORSPELLING */
+
+function voorspel() {
+
+    const voorspellingen = [
+
+        "Binnenkort gebeurt er iets verrassend leuks! ✨",
+
+        "Je gaat vandaag hard lachen 😂",
+
+        "Je krijgt binnenkort een goed idee 💡",
+
+        "Er wacht een leuke ontdekking op je 🔎",
+
+        "Vandaag is een goede dag om iets nieuws te proberen 🚀"
+
+    ];
+
+    document.getElementById("voorspelling")
+        .textContent =
+        randomItem(voorspellingen);
+
+}
+
+
+/* CHALLENGE */
+
+function challenge() {
+
+    document.getElementById("challenge")
+        .textContent =
+        randomItem(challenges);
+
+}
+
+</script>
+
+</body>
+</html>
