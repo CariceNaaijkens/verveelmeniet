@@ -1,11 +1,9 @@
-index.html
 <!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>VerveelMeNiet 🤪</title>
+<title>VerveelMeNiet!</title>
 
 <style>
     * {
@@ -15,143 +13,114 @@ index.html
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        text-align: center;
-        color: white;
-        min-height: 100vh;
         background: linear-gradient(135deg, #7c3aed, #ec4899);
-        transition: 0.5s;
+        min-height: 100vh;
+        color: white;
     }
 
-    header {
-        padding: 50px 20px 25px;
+    .scherm {
+        display: none;
+        min-height: 100vh;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .actief {
+        display: block;
     }
 
     h1 {
-        font-size: 55px;
-        margin: 0;
+        font-size: 45px;
+        margin: 20px 0 10px;
     }
 
-    header p {
+    h2 {
+        font-size: 32px;
+    }
+
+    .ondertitel {
         font-size: 20px;
+        margin-bottom: 30px;
     }
 
-    .container {
-        max-width: 1000px;
+    .menu {
+        max-width: 800px;
         margin: auto;
-        padding: 20px;
-    }
-
-    .card {
-        background: white;
-        color: #222;
-        border-radius: 25px;
-        padding: 25px;
-        margin: 20px 0;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
     }
 
     button {
         border: none;
-        border-radius: 15px;
-        padding: 15px 20px;
-        margin: 6px;
-        font-size: 17px;
+        border-radius: 20px;
+        padding: 20px;
+        font-size: 19px;
         font-weight: bold;
         cursor: pointer;
-        background: #eee;
-        transition: 0.15s;
+        background: white;
+        color: #333;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        transition: 0.2s;
     }
 
     button:hover {
-        transform: scale(1.08);
+        transform: scale(1.05);
     }
 
-    .main-button {
-        background: #ff7a18;
+    .terug {
+        margin-top: 35px;
+        background: #222;
         color: white;
     }
 
-    .buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .result {
-        background: #f2f2f7;
-        border-radius: 15px;
-        padding: 20px;
-        margin: 15px 0;
-        font-size: 20px;
-        font-weight: bold;
-        min-height: 65px;
-    }
-
-    #reaction {
-        height: 120px;
-        border-radius: 20px;
-        background: #ff4757;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .random-knop {
+        background: linear-gradient(135deg, #ff7a18, #ffb000);
         color: white;
-        font-size: 25px;
-        font-weight: bold;
-        cursor: pointer;
-        margin: 15px 0;
+        font-size: 24px;
+        padding: 25px;
     }
 
-    footer {
-        padding: 30px;
+    .start-box {
+        max-width: 650px;
+        margin: 80px auto;
+        background: white;
+        color: #222;
+        padding: 45px 25px;
+        border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
 
-    /* KOPROL */
-    @keyframes koprol {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        50% {
-            transform: rotate(180deg) scale(0.9);
-        }
-
-        100% {
-            transform: rotate(360deg);
-        }
+    .start-emoji {
+        font-size: 80px;
     }
 
-    .do-koprol {
-        animation: koprol 0.9s ease-in-out;
+    .start-box button {
+        background: #7c3aed;
+        color: white;
     }
 
-    /* CONFETTI */
-    .confetti {
-        position: fixed;
-        top: -20px;
-        width: 10px;
-        height: 18px;
-        animation: vallen 2s linear forwards;
-        z-index: 999;
+    .kaart {
+        max-width: 700px;
+        margin: 30px auto;
+        background: white;
+        color: #222;
+        padding: 35px;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
 
-    @keyframes vallen {
-        to {
-            transform: translateY(110vh) rotate(720deg);
-            opacity: 0;
-        }
+    .kaart h3 {
+        font-size: 30px;
     }
 
     @media (max-width: 600px) {
         h1 {
-            font-size: 40px;
+            font-size: 35px;
         }
 
-        header p {
-            font-size: 17px;
-        }
-
-        button {
-            font-size: 15px;
+        h2 {
+            font-size: 27px;
         }
     }
 </style>
@@ -159,159 +128,26 @@ index.html
 
 <body>
 
-<header>
-    <h1>🤪 VerveelMeNiet!</h1>
+<!-- ========================= -->
+<!-- STARTSCHERM -->
+<!-- ========================= -->
 
-    <p>
-        Verveel je je? Dan ben je hier precies goed! 😎
-    </p>
-</header>
+<div id="startscherm" class="scherm actief">
 
+    <div class="start-box">
 
-<div class="container">
+        <div class="start-emoji">🤪</div>
 
-    <!-- VERRAS MIJ -->
-    <div class="card">
-
-        <h2>🎁 Wat zullen we doen?</h2>
-
-        <div id="idee" class="result">
-            Klik op "Verras me!"
-        </div>
-
-        <button class="main-button" onclick="verrasMij()">
-            🎁 Verras me!
-        </button>
-
-        <button onclick="koprol()">
-            🤸 KOPROL!
-        </button>
-
-        <button onclick="feest()">
-            🎉 Feestmodus!
-        </button>
-
-        <button onclick="nieuweKleuren()">
-            🌈 Nieuwe kleuren
-        </button>
-
-    </div>
-
-
-    <!-- GRAP -->
-    <div class="card">
-
-        <h2>😂 Random grap</h2>
-
-        <div id="grap" class="result">
-            Klik op de knop!
-        </div>
-
-        <button class="main-button" onclick="grap()">
-            😂 Vertel een grap
-        </button>
-
-    </div>
-
-
-    <!-- RAAD HET GETAL -->
-    <div class="card">
-
-        <h2>🧠 Raad het getal</h2>
+        <h1>VerveelMeNiet!</h1>
 
         <p>
-            Ik heb een getal gekozen tussen 1 en 10.
+            Welkom bij VerveelMeNiet! 🎉<br><br>
+            Hier vind je spelletjes, random dingen,
+            challenges en allerlei nutteloze onzin.
         </p>
 
-        <div class="buttons">
-
-            <button onclick="raad(1)">1</button>
-            <button onclick="raad(2)">2</button>
-            <button onclick="raad(3)">3</button>
-            <button onclick="raad(4)">4</button>
-            <button onclick="raad(5)">5</button>
-            <button onclick="raad(6)">6</button>
-            <button onclick="raad(7)">7</button>
-            <button onclick="raad(8)">8</button>
-            <button onclick="raad(9)">9</button>
-            <button onclick="raad(10)">10</button>
-
-        </div>
-
-        <div id="raadResultaat" class="result">
-            Kies een getal!
-        </div>
-
-    </div>
-
-
-    <!-- REACTIESPEL -->
-    <div class="card">
-
-        <h2>⚡ Reactiespel</h2>
-
-        <p>
-            Klik zo snel mogelijk als het vak groen wordt!
-        </p>
-
-        <div id="reaction" onclick="klikReaction()">
-            START
-        </div>
-
-        <button class="main-button" onclick="startReaction()">
-            ⚡ Start
-        </button>
-
-        <div id="reactionResult" class="result">
-            Je tijd verschijnt hier.
-        </div>
-
-    </div>
-
-
-    <!-- KOP OF MUNT -->
-    <div class="card">
-
-        <h2>🪙 Kop of munt?</h2>
-
-        <div id="muntResultaat" class="result">
-            Kies!
-        </div>
-
-        <button onclick="muntGooien()">
-            🪙 Gooien!
-        </button>
-
-    </div>
-
-
-    <!-- VOORSPELLING -->
-    <div class="card">
-
-        <h2>🔮 Random voorspelling</h2>
-
-        <div id="voorspelling" class="result">
-            De toekomst weet het al...
-        </div>
-
-        <button class="main-button" onclick="voorspel()">
-            🔮 Voorspel mijn toekomst
-        </button>
-
-    </div>
-
-
-    <!-- CHALLENGE -->
-    <div class="card">
-
-        <h2>🔥 Challenge</h2>
-
-        <div id="challenge" class="result">
-            Klik voor een challenge!
-        </div>
-
-        <button class="main-button" onclick="challenge()">
-            🔥 Geef me een challenge
+        <button onclick="naar('hoofdmenu')">
+            🚀 Start de website!
         </button>
 
     </div>
@@ -319,306 +155,330 @@ index.html
 </div>
 
 
-<footer>
-    Gemaakt tegen verveling 🤪 ❤️
-</footer>
+<!-- ========================= -->
+<!-- HOOFDMENU -->
+<!-- ========================= -->
+
+<div id="hoofdmenu" class="scherm">
+
+    <h1>🤪 VerveelMeNiet!</h1>
+
+    <p class="ondertitel">
+        Kies waar je zin in hebt!
+    </p>
+
+    <div class="menu">
+
+        <button onclick="naar('spelletjes')">
+            🎮 Spelletjes
+        </button>
+
+        <button onclick="naar('random')">
+            🎲 Random
+        </button>
+
+        <button onclick="naar('nutteloos')">
+            🤪 Nutteloos & grappig
+        </button>
+
+        <button onclick="naar('challenges')">
+            🏆 Challenges
+        </button>
+
+        <button onclick="naar('achievements')">
+            🎖️ Achievements
+        </button>
+
+        <button class="random-knop" onclick="doeIetsWillekeurigs()">
+            🤯 DOE IETS<br>WILLEKEURIGS
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- SPELLETJES -->
+<!-- ========================= -->
+
+<div id="spelletjes" class="scherm">
+
+    <h2>🎮 Spelletjes</h2>
+
+    <p class="ondertitel">
+        Kies een spel!
+    </p>
+
+    <div class="menu">
+
+        <button onclick="openSpel('🎯 Klikspel')">
+            🎯 Klikspel
+        </button>
+
+        <button onclick="openSpel('🧠 Geheugenspel')">
+            🧠 Geheugenspel
+        </button>
+
+        <button onclick="openSpel('🐍 Mini Snake')">
+            🐍 Mini Snake
+        </button>
+
+        <button onclick="openSpel('🔢 2048-achtig spel')">
+            🔢 2048-achtig spel
+        </button>
+
+        <button onclick="openSpel('🟢 Kleur-reactiespel')">
+            🟢 Kleur-reactiespel
+        </button>
+
+        <button onclick="openSpel('🧩 Mini-puzzel')">
+            🧩 Mini-puzzel
+        </button>
+
+        <button onclick="openSpel('🪨📄✂️ Steen-papier-schaar')">
+            🪨📄✂️ Steen-papier-schaar
+        </button>
+
+    </div>
+
+    <button class="terug" onclick="naar('hoofdmenu')">
+        🏠 Hoofdmenu
+    </button>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- RANDOM -->
+<!-- ========================= -->
+
+<div id="random" class="scherm">
+
+    <h2>🎲 Random</h2>
+
+    <div class="menu">
+
+        <button onclick="openSpel('🔥 Random challenge')">
+            🔥 Random challenge
+        </button>
+
+        <button onclick="openSpel('🔮 Random voorspelling')">
+            🔮 Random voorspelling
+        </button>
+
+        <button onclick="openSpel('🎭 Persoonlijkheidstest')">
+            🎭 Welke persoonlijkheid ben jij?
+        </button>
+
+        <button onclick="openSpel('🦸 Superkracht')">
+            🦸 Welke superkracht krijg jij?
+        </button>
+
+        <button onclick="openSpel('🐉 Fantasiedier')">
+            🐉 Welk fantasiedier ben jij?
+        </button>
+
+        <button onclick="openSpel('🌍 Random plek')">
+            🌍 Random plek op aarde
+        </button>
+
+        <button onclick="openSpel('🍕 Eten')">
+            🍕 Wat moet je vandaag eten?
+        </button>
+
+    </div>
+
+    <button class="terug" onclick="naar('hoofdmenu')">
+        🏠 Hoofdmenu
+    </button>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- NUTTELOOS -->
+<!-- ========================= -->
+
+<div id="nutteloos" class="scherm">
+
+    <h2>🤪 Nutteloos & grappig</h2>
+
+    <div class="menu">
+
+        <button onclick="openSpel('🐸 Kikker')">
+            🐸 Kikker over je scherm
+        </button>
+
+        <button onclick="openSpel('🐱 Kattenknop')">
+            🐱 Kattenknop
+        </button>
+
+        <button onclick="openSpel('🥔 Aardappelknop')">
+            🥔 Aardappelknop
+        </button>
+
+        <button onclick="openSpel('🦆 Eendensimulator')">
+            🦆 Eendensimulator
+        </button>
+
+        <button onclick="openSpel('🧀 Kaasknop')">
+            🧀 Kaasknop
+        </button>
+
+        <button onclick="openSpel('💨 Nutteloze knop')">
+            💨 Nutteloze knop
+        </button>
+
+        <button onclick="openSpel('🔊 Random geluid')">
+            🔊 Random geluid
+        </button>
+
+    </div>
+
+    <button class="terug" onclick="naar('hoofdmenu')">
+        🏠 Hoofdmenu
+    </button>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- CHALLENGES -->
+<!-- ========================= -->
+
+<div id="challenges" class="scherm">
+
+    <h2>🏆 Challenges</h2>
+
+    <div class="menu">
+
+        <button onclick="openSpel('📅 Dagelijkse challenge')">
+            📅 Dagelijkse challenge
+        </button>
+
+        <button onclick="openSpel('🔥 Highscore')">
+            🔥 Highscore
+        </button>
+
+        <button onclick="openSpel('⭐ Punten')">
+            ⭐ Punten verzamelen
+        </button>
+
+    </div>
+
+    <button class="terug" onclick="naar('hoofdmenu')">
+        🏠 Hoofdmenu
+    </button>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- ACHIEVEMENTS -->
+<!-- ========================= -->
+
+<div id="achievements" class="scherm">
+
+    <h2>🎖️ Achievements</h2>
+
+    <div class="kaart">
+
+        <h3>🏅 Jouw achievements</h3>
+
+        <p>🤸 Eerste koprol</p>
+        <p>🎉 Feestbeest</p>
+        <p>😂 10 grappen bekeken</p>
+        <p>🎮 5 spelletjes gespeeld</p>
+
+    </div>
+
+    <button class="terug" onclick="naar('hoofdmenu')">
+        🏠 Hoofdmenu
+    </button>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- SPEL-SCHERM -->
+<!-- ========================= -->
+
+<div id="spel" class="scherm">
+
+    <div class="kaart">
+
+        <h2 id="spelTitel">🎮 Spel</h2>
+
+        <p id="spelTekst">
+            Dit spel gaan we binnenkort bouwen! 🚧
+        </p>
+
+        <button onclick="naar('spelletjes')">
+            🎮 Terug naar spelletjes
+        </button>
+
+        <br><br>
+
+        <button class="terug" onclick="naar('hoofdmenu')">
+            🏠 Hoofdmenu
+        </button>
+
+    </div>
+
+</div>
 
 
 <script>
 
-const ideeen = [
-    "Doe 20 seconden alsof je een robot bent 🤖",
-    "Teken een dier met je ogen dicht 🎨",
-    "Verzin een nieuwe kleur 🌈",
-    "Doe een dansje van 10 seconden 💃",
-    "Probeer een zin te zeggen zonder de letter A 😮",
-    "Bouw een toren van spullen om je heen 🏗️",
-    "Verzin een superheld met een nutteloze superkracht 🦸",
-    "Doe alsof je een nieuwslezer bent 📺",
-    "Maak een gekke foto 📸",
-    "Leer één nieuw woord in een andere taal 🌍"
-];
+function naar(schermNaam) {
 
+    const schermen = document.querySelectorAll(".scherm");
 
-const grappen = [
-    "Waarom ging de computer naar de dokter? Hij had een virus! 💻😂",
-    "Wat zegt een vis als hij tegen een muur zwemt? Dam! 🐟",
-    "Waarom kan een skelet niet liegen? Je kunt er dwars doorheen kijken! 💀",
-    "Wat doet een nul naast een acht? Een briljant idee! 🤓",
-    "Waarom nam de banaan zonnebrand mee? 🍌"
-];
+    schermen.forEach(function(scherm) {
+        scherm.classList.remove("actief");
+    });
 
+    document.getElementById(schermNaam).classList.add("actief");
 
-const challenges = [
-    "Probeer 30 seconden niet te lachen 😐",
-    "Noem 10 dieren in 15 seconden 🐶",
-    "Bedenk 5 superkrachten die niemand wil 🦸",
-    "Maak een geluid dat niemand kan raden 🔊",
-    "Schrijf je naam met je andere hand ✍️",
-    "Zoek iets in je kamer dat blauw is 🔎"
-];
-
-
-let geheimGetal = Math.floor(Math.random() * 10) + 1;
-
-let reactionStart = 0;
-let reactionKlaar = false;
-let reactionTimer;
-
-
-/* RANDOM ITEM */
-
-function randomItem(lijst) {
-    return lijst[Math.floor(Math.random() * lijst.length)];
+    window.scrollTo(0, 0);
 }
 
 
-/* VERRAS MIJ */
+function openSpel(naam) {
 
-function verrasMij() {
+    document.getElementById("spelTitel").textContent = naam;
 
-    document.getElementById("idee").textContent =
-        randomItem(ideeen);
+    document.getElementById("spelTekst").textContent =
+        "Dit onderdeel gaan we binnenkort helemaal werkend maken! 🚧";
 
+    naar("spel");
 }
 
 
-/* GRAP */
+function doeIetsWillekeurigs() {
 
-function grap() {
-
-    document.getElementById("grap").textContent =
-        randomItem(grappen);
-
-}
-
-
-/* KOPROL */
-
-function koprol() {
-
-    document.body.classList.remove("do-koprol");
-
-    void document.body.offsetWidth;
-
-    document.body.classList.add("do-koprol");
-
-}
-
-
-/* FEEST */
-
-function feest() {
-
-    for (let i = 0; i < 80; i++) {
-
-        let confetti = document.createElement("div");
-
-        confetti.className = "confetti";
-
-        confetti.style.left =
-            Math.random() * 100 + "vw";
-
-        confetti.style.background =
-            "hsl(" + Math.random() * 360 + ", 90%, 60%)";
-
-        confetti.style.animationDelay =
-            Math.random() * 0.7 + "s";
-
-        document.body.appendChild(confetti);
-
-        setTimeout(function() {
-            confetti.remove();
-        }, 2500);
-
-    }
-
-}
-
-
-/* NIEUWE KLEUREN */
-
-function nieuweKleuren() {
-
-    const kleuren = [
-        ["#06b6d4", "#3b82f6"],
-        ["#22c55e", "#14b8a6"],
-        ["#f97316", "#ef4444"],
-        ["#8b5cf6", "#d946ef"],
-        ["#0f766e", "#84cc16"]
+    const dingen = [
+        "🎯 Klikspel",
+        "🧠 Geheugenspel",
+        "🐍 Mini Snake",
+        "🔮 Een random voorspelling",
+        "🔥 Een random challenge",
+        "🐸 Een kikker",
+        "😂 Een grap",
+        "🎉 Confetti"
     ];
 
-    let kleurenSet =
-        randomItem(kleuren);
+    const keuze =
+        dingen[Math.floor(Math.random() * dingen.length)];
 
-    document.body.style.background =
-        "linear-gradient(135deg, " +
-        kleurenSet[0] +
-        ", " +
-        kleurenSet[1] +
-        ")";
+    document.getElementById("spelTitel").textContent =
+        "🤯 Willekeurig gekozen!";
 
-}
+    document.getElementById("spelTekst").textContent =
+        "Je krijgt: " + keuze;
 
-
-/* RAAD HET GETAL */
-
-function raad(getal) {
-
-    let resultaat =
-        document.getElementById("raadResultaat");
-
-    if (getal === geheimGetal) {
-
-        resultaat.textContent =
-            "🎉 GOED GERADEN!";
-
-        geheimGetal =
-            Math.floor(Math.random() * 10) + 1;
-
-        feest();
-
-    } else if (getal < geheimGetal) {
-
-        resultaat.textContent =
-            "⬆️ Hoger!";
-
-    } else {
-
-        resultaat.textContent =
-            "⬇️ Lager!";
-
-    }
-
-}
-
-
-/* REACTIESPEL */
-
-function startReaction() {
-
-    const vak =
-        document.getElementById("reaction");
-
-    reactionKlaar = false;
-
-    vak.textContent = "Wacht...";
-
-    vak.style.background = "#f59e0b";
-
-    let tijd =
-        Math.random() * 3000 + 1000;
-
-    clearTimeout(reactionTimer);
-
-    reactionTimer = setTimeout(function() {
-
-        reactionKlaar = true;
-
-        reactionStart =
-            performance.now();
-
-        vak.textContent =
-            "KLIK!!!";
-
-        vak.style.background =
-            "#22c55e";
-
-    }, tijd);
-
-}
-
-
-/* REACTION KLIKKEN */
-
-function klikReaction() {
-
-    const vak =
-        document.getElementById("reaction");
-
-    if (!reactionKlaar) {
-
-        vak.textContent =
-            "TE VROEG! 😂";
-
-        vak.style.background =
-            "#ef4444";
-
-        clearTimeout(reactionTimer);
-
-        return;
-
-    }
-
-    let tijd =
-        Math.round(
-            performance.now() - reactionStart
-        );
-
-    document.getElementById("reactionResult")
-        .textContent =
-        "⚡ " + tijd + " milliseconden!";
-
-    vak.textContent =
-        "START";
-
-    vak.style.background =
-        "#ff4757";
-
-    reactionKlaar = false;
-
-}
-
-
-/* KOP OF MUNT */
-
-function muntGooien() {
-
-    let resultaat =
-        Math.random() < 0.5
-        ? "KOP 🪙"
-        : "MUNT 🪙";
-
-    document.getElementById("muntResultaat")
-        .textContent =
-        resultaat;
-
-}
-
-
-/* VOORSPELLING */
-
-function voorspel() {
-
-    const voorspellingen = [
-
-        "Binnenkort gebeurt er iets verrassend leuks! ✨",
-
-        "Je gaat vandaag hard lachen 😂",
-
-        "Je krijgt binnenkort een goed idee 💡",
-
-        "Er wacht een leuke ontdekking op je 🔎",
-
-        "Vandaag is een goede dag om iets nieuws te proberen 🚀"
-
-    ];
-
-    document.getElementById("voorspelling")
-        .textContent =
-        randomItem(voorspellingen);
-
-}
-
-
-/* CHALLENGE */
-
-function challenge() {
-
-    document.getElementById("challenge")
-        .textContent =
-        randomItem(challenges);
-
+    naar("spel");
 }
 
 </script>
