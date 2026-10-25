@@ -1,1 +1,66 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Random - VerveelMeNiet!</title><link rel="icon" href="icoon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"></head><body><main class="page"><h1>🎲 Random</h1><div class="card"><p id="result">Klik op een knop!</p><div class="grid small"><button onclick="pick('challenges')">🔥 Random challenge</button><button onclick="pick('predictions')">🔮 Random voorspelling</button><button onclick="pick('personalities')">🎭 Persoonlijkheid</button><button onclick="pick('powers')">🦸 Superkracht</button><button onclick="pick('animals')">🐉 Fantasiedier</button><button onclick="pick('places')">🌍 Random plek</button><button onclick="pick('food')">🍕 Wat moet je eten?</button><button onclick="pick('all')">🤯 Doe iets willekeurigs</button></div></div><a class="back" href="hoofdmenu.html">🏠 Hoofdmenu</a></main><script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>De Waarzegster - VerveelMeNiet!</title>
+  <link rel="icon" href="icoon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page random-page">
+    <h1>🎲 Random</h1>
+    <p class="subtitle">Laat de mysterieuze waarzegster jouw lot voorspellen…</p>
+
+    <section id="randomMenu" class="card">
+      <p id="result">Kies iets en kijk in de magische kristallen bol!</p>
+      <div class="grid small">
+        <button onclick="pick('challenges')">🔥 Random challenge</button>
+        <button onclick="pick('predictions')">🔮 Random voorspelling</button>
+        <button onclick="pick('personalities')">🎭 Persoonlijkheid</button>
+        <button onclick="pick('powers')">🦸 Superkracht</button>
+        <button onclick="pick('animals')">🐉 Fantasiedier</button>
+        <button onclick="pick('places')">🌍 Random plek</button>
+        <button onclick="pick('food')">🍕 Wat moet je eten?</button>
+        <button class="special" onclick="pick('all')">🤯 DOE IETS WILLEKEURIGS</button>
+      </div>
+    </section>
+
+    <section id="fortuneScene" class="fortune-scene" hidden aria-live="polite">
+      <div class="fortune-heading">
+        <h2>🔮 Madame Mysteria voorspelt…</h2>
+        <p>De kristallen bol laat een geheimzinnig filmpje zien!</p>
+      </div>
+      <div class="fortune-layout">
+        <div class="fortune-teller" aria-label="Een vriendelijke cartoon-waarzegster">
+          <div class="teller-stars">✦ · ✧ · ✦</div>
+          <div class="teller-hat">♠</div>
+          <div class="teller-face"><span class="hair">〰</span><span class="eyes">• •</span><span class="nose">⌁</span><span class="smile">⌣</span></div>
+          <div class="teller-body"><span class="necklace">✦</span><span class="cape-star">✧</span></div>
+          <div class="teller-caption">MADAME MYSTERIA</div>
+        </div>
+        <div class="crystal-wrap">
+          <div class="crystal-label">✦ LIVE UIT DE FANTASIEWERELD ✦</div>
+          <div class="crystal-ball" role="img" aria-label="Een geanimeerd fantasiefilmpje in een kristallen bol">
+            <div class="movie-sky"><span class="movie-star star-one">✦</span><span class="movie-star star-two">✧</span><span class="movie-star star-three">✦</span><div class="movie-moon"></div><div class="movie-cloud cloud-one"></div><div class="movie-cloud cloud-two"></div><div id="movieCreature" class="movie-creature">🐉</div><div class="movie-ground"></div><div class="movie-sparkle sparkle-one">✧</div><div class="movie-sparkle sparkle-two">✦</div></div>
+            <div class="film-glint"></div>
+          </div>
+          <div class="crystal-base"></div>
+          <div class="movie-controls"><span class="playing-dot"></span> <span id="movieStatus">MAGISCH FILMPJE SPEELT</span> <span class="movie-time">∞</span></div>
+          <button id="musicButton" class="music-button" onclick="toggleMagicMusic()" aria-pressed="false">🎵 Zet magische muziek aan</button>
+        </div>
+      </div>
+      <div class="prediction-card">
+        <div class="prediction-label">📜 DE WAARZEGSTER ZEGT</div>
+        <h3 id="fortuneTitle">Een geheim verschijnt…</h3>
+        <p id="fortuneText">De kristallen bol is aan het opwarmen.</p>
+        <button onclick="pickAgain()">🔁 Nog een voorspelling</button>
+      </div>
+      <button class="back" onclick="backToRandom()">↩ Terug naar Random</button>
+    </section>
+
+    <a class="back" href="hoofdmenu.html">🏠 Hoofdmenu</a>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
